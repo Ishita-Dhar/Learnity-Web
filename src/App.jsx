@@ -1,12 +1,13 @@
 import React from 'react'
-import Sidebar from './Components/Sidebar'
+import Dashboard from './Student/Dashboard'
+
 
 function App() {
   
 
   return (
     <div>
-      <Sidebar/>
+      <Dashboard/>
     </div>
   )
 }
