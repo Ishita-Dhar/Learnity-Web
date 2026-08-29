@@ -1,5 +1,5 @@
 import React from 'react'
-import Dashboard from './Student/Dashboard'
+import StudentDashboard from './Student/StudentDashboard'
 
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div>
-      <Dashboard/>
+      <StudentDashboard/>
     </div>
   )
 }

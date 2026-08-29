@@ -42,7 +42,7 @@ const Sidebar = () => {
     ];
 
     return (
-        <div className="flex flex-col justify-between h-screen w-1/5 p-4 border-r border-gray-300">
+        <div className="flex flex-col justify-between h-screen  p-4 border-r border-gray-300">
 
             {/* Top Section */}
             <div>
