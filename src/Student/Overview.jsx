@@ -9,6 +9,8 @@ import { FaBook } from "react-icons/fa";
 import { FaRegFolderOpen } from "react-icons/fa6";
 import { FaBullhorn } from 'react-icons/fa';
 import { FaPeopleGroup } from "react-icons/fa6";
+import Beta from '../Components/Beta';
+import { LuSparkles } from "react-icons/lu";
 
 const Overview = () => {
 
@@ -17,25 +19,30 @@ const Overview = () => {
             Label: 'My Subjects',
             logo: <FaBook />,
             bgcolor: "bg-green-200",
+            hoverbg:'group-hover:bg-green-300',
             textcolor: "text-green-900"
         },
         {
             Label: 'Materials',
             logo: <FaRegFolderOpen />,
             bgcolor: "bg-green-200",
+            hoverbg:'group-hover:bg-green-300',
             textcolor: "text-green-900"
         },
         {
             Label: 'Notice',
             logo: <FaBullhorn />,
             bgcolor: 'bg-red-200',
+            hoverbg:'group-hover:bg-red-300',
             textcolor: 'text-red-900'
         },
         {
             Label: 'Clubs & Events',
             logo: <FaPeopleGroup />,
             bgcolor: 'bg-red-200',
-            textcolor: 'text-red-900'
+            hoverbg:'group-hover:bg-red-300',
+            textcolor: 'text-red-900',
+            beta: <Beta/>
         },
     ]
 
@@ -53,7 +60,9 @@ const Overview = () => {
                     <i className='relative border border-gray-300 rounded-full p-3 hover:cursor-pointer hover:bg-gray-200 transition-all duration-300'><FaRegBell size={22} /><div className='bg-red-700 p-1 rounded-full absolute top-3 right-3'></div></i>
                 </div>
             </div>
+
             <div className='flex gap-4'>
+
                 {/* next event preview */}
                 <div className='border border-gray-300 w-1/3  rounded-2xl flex flex-col justify-center hover:shadow-xl shadow-green-800/10 transition-all duration-200 group hover:border-gray-400'>
                     <div className='flex justify-between py-4 px-3 items-center border-b border-gray-300'>
@@ -71,7 +80,15 @@ const Overview = () => {
                         <button className=' border border-gray-300 w-4/5 py-1 rounded-lg font-medium text-gray-700 '>Set Reminder</button>
                     </div>
                 </div>
-                <div className='w-2/3 flex items-start gap-4'>
+
+
+                
+
+                <div className='w-2/3 flex flex-col gap-4'>
+
+                    {/* folders */}
+
+                    <div className=' flex items-start gap-4'>
                     {
                         folders.map((elem) => (
                             <div className='w-[calc(50%-8px)]
@@ -93,8 +110,9 @@ const Overview = () => {
                 hover:scale-[1.02]
                 transition-all
                 duration-200
-                cursor-pointer group'>
-                                <i className={`p-3 ${elem.bgcolor} ${elem.textcolor} text-2xl rounded-full group-hover:scale-102`}>{elem.logo} </i>
+                cursor-pointer group relative'>
+                                {elem.beta}
+                                <i className={`transition-all duration-200 p-3 ${elem.bgcolor} ${elem.textcolor} ${elem.hoverbg} text-2xl rounded-full group-hover:scale-105`}>{elem.logo} </i>
                                 <span className={`font-medium ${elem.textcolor} text-sm`}>{elem.Label}</span>
 
                             </div>
@@ -102,6 +120,30 @@ const Overview = () => {
                         ))
                     }
 
+                </div>
+
+
+                {/* AI Quiz */}
+
+                <div className='h-full border border-red-200 rounded-xl p-4 flex items-center gap-3 relative'>
+                    <Beta/>
+                    <i className='bg-red-100 p-3 rounded-full flex justify-center items-center text-red-900'><LuSparkles  size={30} /></i>
+                    <div className=''>
+                        <h1 className='text-2xl font-semibold'>AI Study Assistant Ready</h1>
+                        <p className='text-sm text-gray-600 '>Based on your recent activity, I've generated a practice quiz for Operating Systems.</p>
+                    </div>
+                    <button className='border border-gray-300 hover:border-red-200 rounded-lg py-1.5 px-3.5 text-sm cursor-pointer hover:text-red-900'>Start Quiz</button>
+                </div>
+                </div>
+            </div>
+
+            <div>
+                    
+                <div>
+                    {/* recent activity */}
+                </div>
+                <div>
+                    {/* Schedule */}
                 </div>
             </div>
 

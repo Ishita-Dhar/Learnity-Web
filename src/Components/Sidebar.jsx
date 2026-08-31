@@ -124,8 +124,8 @@ const Sidebar = () => {
                         py-3 px-3
                         rounded-lg
                         text-green-50
-                        bg-green-700
-                        hover:bg-green-800
+                        bg-green-800
+                        hover:bg-green-900
                         transition
                         cursor-pointer
                     "
