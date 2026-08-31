@@ -42,7 +42,7 @@ const Sidebar = () => {
     ];
 
     return (
-        <div className="flex flex-col justify-between h-screen  p-4 border-r border-gray-300">
+        <div className="flex flex-col justify-between h-screen  p-4 border-r bg-green-50/40 border-gray-300">
 
             {/* Top Section */}
             <div>
@@ -51,7 +51,7 @@ const Sidebar = () => {
                 <div className="flex items-center gap-4 mb-10">
 
                     <img
-                        src="#"
+                        src=""
                         alt="Learnity"
                         className="h-15 w-15 bg-green-300 rounded-full object-cover"
                     />
@@ -124,8 +124,8 @@ const Sidebar = () => {
                         py-3 px-3
                         rounded-lg
                         text-green-50
-                        bg-green-700
-                        hover:bg-green-800
+                        bg-green-800
+                        hover:bg-green-900
                         transition
                         cursor-pointer
                     "
