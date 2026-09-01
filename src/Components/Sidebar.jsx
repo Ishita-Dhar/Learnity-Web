@@ -42,7 +42,7 @@ const Sidebar = () => {
     ];
 
     return (
-        <div className="flex flex-col justify-between h-screen  p-4 border-r bg-green-50/40 border-gray-300">
+        <div className="flex flex-col justify-between h-screen p-4 border-r bg-green-50/40 border-gray-300">
 
             {/* Top Section */}
             <div>
@@ -115,7 +115,7 @@ const Sidebar = () => {
             </div>
 
             {/* Bottom Section */}
-            <div className="border-t border-gray-300 pt-4 space-y-3">
+            <div className="mt-auto border-t border-gray-300 pt-4 space-y-3">
                 {/* Upload Material */}
                 <button
                     className="
