@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learnity</title>
+    <link rel="stylesheet" href="">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+    font-family:Arial, Helvetica, sans-serif;
+    background: #f8f9fb;
+    color: #252525;
+    }
+
+
+    .sidebar {
+    width: 275px;
+    height: 100vh;
+    background: white;
+    border-right: 1px solid #ddd;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 25px 18px;
+    }
+
+    .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color:  #257e5f;
+    margin-bottom: 35px;
+    }
+
+    .logo > div h2 {
+    font-size: 25px;
+    }
+
+    .logo p {
+    color: #666;
+    font-size: 14px;
+    margin-top: 8px;
+    }
+
+    .logo:first-child {
+    font-size: 32px;
+    }
+
+
+    .upload-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #257e5f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 22px;
+    }
+
+
+    nav a,
+    .sidebar-bottom a {
+    display: block;
+    padding: 14px 15px;
+    text-decoration: none;
+    color: #444;
+    font-size: 16px;
+    margin-bottom: 3px;
+    border-radius: 0 25px 25px 0;
+    }
+    nav a:hover {
+    background: #f0f4fc;
+    }
+
+    nav .active {
+    color: #257e5f;
+    background: #e9effb;
+    border-left: 4px solid  #257e5f;
+    }
+
+
+    .sidebar-bottom {
+    position: absolute;
+    bottom: 25px;
+    left: 18px;
+    right: 18px;
+    }
+
+    .logout {
+    color: #b33a3a !important;
+    }
+
+
+    .main {
+    margin-left: 275px;
+    padding: 35px;
+    }
+
+    .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 45px;
+    }
+
+
+    .header h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+    }
+
+    .header p {
+    color: #666;
+    font-size: 19px;
+    }
+
+    .semester {
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;}
+
+    .semester span {
+    font-size: 30px;
+    }
+
+
+
+    .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    }
+
+    .card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    padding: 25px;
+    min-height: 215px;
+    }
+
+    .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .icon {
+    font-size: 25px;
+    background: #f4f6fb;
+    padding: 10px;
+    border-radius: 8px;
+    }
+
+    .status {
+    background: #d8f7e9;
+    color:  #257e5f;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    }
+
+    .card p {
+    color: #555;
+    margin-top: 45px;
+    font-size: 17px;
+    }
+
+    .card h2 {
+    margin-top: 10px;
+    font-size: 27px;
+    }
+
+    .card small {
+    display: block;
+    color: #777;
+    margin-top: 10px;
+    }
+    .card a {
+    display: inline-block;
+    margin-top: 10px;
+    color:  #257e5f;
+    text-decoration: none;
+    }
+    .dot {
+    width: 10px;
+    height: 10px;
+    background: #c65b61;
+    border-radius: 50%;
+    }
+
+
+
+    .actions {
+    display: flex;
+    gap: 18px;
+    margin: 40px 0;
+    }
+
+    .actions button {
+    padding: 13px 28px;
+    background: white;
+    border: 1px solid #cfd4db;
+    border-radius: 8px;
+    color: #257e5f;
+    font-size: 16px;
+    cursor: pointer;
+    }
+
+    .actions button:first-child {
+    background: #257e5f;
+    color: white;
+    }
+
+
+
+
+    .content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    }
+
+
+
+
+    .activity {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    padding: 18px;
+    }
+
+    .section-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px 18px;
+    border-bottom: 1px solid #ddd;
+    }
+
+    .section-title h3 {
+    color: #444;
+    font-size: 17px;
+    }
+
+    .activity-item {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+    }
+
+    .circle {
+    min-width: 30px;
+    height: 30px;
+    border: 2px solid #257e5f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .circle.brown {
+    border-color: #92733c;
+    }
+
+    .circle.green {
+    border-color:  #257e5f;
+    }
+
+    .activity-box {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 9px;
+    padding: 17px;
+      width: 100%;
+    }
+
+    .activity-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    }
+
+    .activity-heading span {
+    color: #777;
+    font-size: 13px;
+    }
+
+    .activity-box p {
+    color: #666;
+    line-height: 1.5;
+    }
+
+    .activity-box a {
+    display: block;
+    margin-top: 12px;
+    color: #987b43;
+    text-decoration: none;
+    }
+
+
+    .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    }
+
+    .side-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    padding: 20px;
+    }
+
+    .side-card h3 {
+    color: #444;
+    margin-bottom: 18px;
+    font-size: 17px;
+    }
+
+    .class-item {
+    display: flex;
+    gap: 18px;
+    padding: 15px 0;
+    border-top: 1px solid #ddd;
+    }
+
+    .class-item small {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    }
+
+    .class-item b {
+    display: block;
+    color: #257e5f;
+    margin-top: 4px;
+    }
+
+    .class-item strong {
+    font-size: 16px;
+    }
+
+    .class-item p {
+    color: #777;
+    margin-top: 5px;
+    font-size: 13px;
+    }
+
+    .schedule {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color:  #257e5f;
+    text-decoration: none;
+    }
+
+    .insights p {
+    color: #666;
+    line-height: 1.6;
+    }
+
+    .insights a {
+    display: block;
+    margin-top: 15px;
+    color: #257e5f;
+    text-decoration: none;
+    }
+
+
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main {
+        margin-left: 210px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar-bottom {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+  
+    <aside class="sidebar">
+
+        <div class="logo">
+            🎓
+            <div>
+                <h2>Learnity</h2>
+                
+                <p>Faculty Portal</p>
+            </div>
+        </div>
+
+        <button class="upload-btn">⬆ Upload Material</button>
+
+        <nav>
+            <a class="active" href="#">▦ &nbsp; Dashboard</a>
+            <a href="#">📖 &nbsp; Subjects</a>
+            <a href="#">📢 &nbsp; Announcements</a>
+            <a href="#">▣ &nbsp; Events</a>
+            <a href="#">📁 &nbsp; Resources</a>
+            <a href="#">⚙ &nbsp; Settings</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="#">❔ &nbsp; Help Center!</a>
+            <a class="logout" href="#">⇥ &nbsp; Logout</a>
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="header">
+            <div>
+                <h1>Welcome back, Dr.Dibyendu mukherjee</h1>
+                <p>Here is a summary of your academic activities today.</p>
+            </div>
+
+            <div class="semester">
+                all semester 2026
+                <span>👩🏻</span>
+            </div>
+        </header>
+
+
+
+        <section class="cards">
+
+            <div class="card">
+                <div class="card-top">
+                    <span class="icon">📖</span>
+                    <span class="status">Active</span>
+                </div>
+
+                <p>My Subjects</p>
+                <h2>4 Classes</h2>
+            </div>
+
+
+            <div class="card">
+                <div class="card-top">
+                    <span class="icon">📁</span>
+                </div>
+
+                <p>Recent Materials</p>
+                <h2>12 Uploads</h2>
+                <small>+3 this week</small>
+            </div>
+
+
+            <div class="card">
+                <div class="card-top">
+                    <span class="icon">📢</span>
+                    <span class="dot"></span>
+                </div>
+
+                <p>RECENT ANNOUCEMENTS</p>
+                <h2>5 Drafts</h2>
+                <a href="#">Review drafts →</a>
+            </div>
+
+        </section>
+
+
+        <section class="actions">
+            <button>⬆ &nbsp; Upload Material</button>
+            <button>🔔 &nbsp; Create Announcement</button>
+            <button>📅 &nbsp; Create Event</button>
+        </section>
+
+
+        <section class="content">
+
+            <!-- Recent Activity -->
+            <div class="activity">
+
+                <div class="section-title">
+                    <h3>◔ &nbsp; Recent Activity</h3>
+                    <span>•••</span>
+                </div>
+
+                <div class="activity-item">
+                    <div class="circle">📄</div>
+
+                    <div class="activity-box">
+                        <div class="activity-heading">
+                            <b>Uploaded Syllabus -OEC-CS 701B</b>
+                            <span>2 hours ago</span>
+                        </div>
+
+                        <p>
+                            You uploaded
+                            <b>OEC-CS 701B_ ALL-Syllabus-2026.pdf'</b>
+                            to Introduction to 'MULTIMEDIA SYSTEM'
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="activity-item">
+                    <div class="circle brown">○</div>
+
+                    <div class="activity-box">
+                        <div class="activity-heading">
+                            <b>Published Announcement</b>
+                            <span>Yesterday</span>
+                        </div>
+
+                        <p>
+                            "Reminder: Midterm Project proposals are due next Friday."
+                            sent to Advanced Algorithms.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="activity-item">
+                    <div class="circle green">○</div>
+
+                    <div class="activity-box">
+                        <div class="activity-heading">
+                            <b>AI Quiz Generation Completed</b>
+                            <span>2 days ago</span>
+                        </div>
+
+                        <p>
+                            The AI assistant finished generating 15 multiple-choice
+                            questions based on Lecture 4 materials for Data Structures.
+                        </p>
+
+                        <a href="#">Review Questions</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+          
+            <div class="right-side">
+
+             
+                <div class="side-card">
+                    <h3>▣ &nbsp; UPCOMING METTING</h3>
+
+                    <div class="class-item">
+                        <div>
+                            <small>TODAY</small>
+                            <b>10:00</b>
+                        </div>
+
+                        <div>
+                            <strong>TEACHERS' DAY METTING</strong>
+                            <p>Room 310, SMART CLASS ROOM</p>
+                        </div>
+                    </div>
+
+
+                    <div class="class-item">
+                        <div>
+                            <small>TODAY</small>
+                            <b>14:00</b>
+                        </div>
+
+                        <div>
+                            <strong>CULTURAL EVENTS METTING</strong>
+                            <p>SAME LOCATION</p>
+                        </div>
+                    </div>
+
+                    <a class="schedule" href="#">View Schedule</a>
+                </div>
+
+
+                
+                <div class="side-card insights">
+                    <h3>💡 &nbsp; Insights</h3>
+
+                    <p>
+                        Student engagement in
+                        <b>"MULTIMEDIA"</b>
+                        discussion forum is down
+                        <b>15%</b> this week.
+                    </p>
+
+                    <a href="#">Draft engagement prompt</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
