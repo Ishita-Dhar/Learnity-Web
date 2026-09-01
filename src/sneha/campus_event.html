@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Events</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f9fb;
+            color: #171717;
+        }
+
+       
+        .sidebar {
+            position: fixed;
+            width: 290px;
+            height: 100vh;
+            background: white;
+            border-right: 1px solid #ddd;
+            padding: 30px 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 55px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #257e5f;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo h2 {
+            color: #257e5f;
+            font-size: 24px;
+        }
+
+        .logo p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            padding: 15px 5px;
+            margin: 7px 0;
+            color: #444;
+            font-size: 17px;
+            border-radius: 8px;
+        }
+
+        .menu li.active {
+            background: #eaf1ff;
+            color: #257e5f;
+            border-left: 4px solid  #257e5f;
+        }
+
+        .bottom-menu {
+            position: absolute;
+            bottom: 25px;
+            width: 235px;
+        }
+
+        .upload {
+            background:  #257e5f;
+            color: white;
+            padding: 13px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .bottom-menu p {
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+       
+        .main {
+            margin-left: 290px;
+            padding: 35px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .filters button {
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            margin-left: 8px;
+            font-size: 15px;
+        }
+
+        .filters .blue {
+            background: #257e5f;
+            color: white;
+        }
+
+      
+        .events {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .featured {
+            grid-column: span 2;
+            display: flex;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .featured img {
+            width: 300px;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 25px;
+            flex: 1;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e9f8ef;
+            color:  #257e5f;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .department {
+            color:  #257e5f;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .featured h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .location {
+            border-top: 1px solid #ddd;
+            margin-top: 125px;
+            padding-top: 20px;
+            color: #555;
+        }
+
+        .register {
+            float: right;
+            background:  #257e5f;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+       
+        .recommend {
+            background: #f4f1eb;
+        }
+
+        .recommend h2 {
+            font-size: 26px;
+            margin: 20px 0;
+        }
+
+        .recommend p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .details {
+            margin-top: 35px;
+            line-height: 2;
+        }
+
+        .view {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            background: white;
+            border: 1px solid #888;
+            border-radius: 8px;
+        }
+
+       
+        .small-card {
+            min-height: 350px;
+        }
+
+        .small-card h2 {
+            font-size: 27px;
+            margin: 20px 0;
+        }
+
+        .small-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .small-card .info {
+            margin-top: 25px;
+            line-height: 2;
+            color: #555;
+        }
+
+       
+        @media (max-width: 1000px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+            }
+
+            .events {
+                grid-template-columns: 1fr;
+            }
+
+            .featured {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .header {
+                display: block;
+            }
+
+            .filters {
+                margin-top: 20px;
+            }
+
+            .featured {
+                display: block;
+            }
+
+            .featured img {
+                width: 100%;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+   
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">L</div>
+
+            <div>
+                <h2>Learnity</h2>
+                <p>Student Portal</p>
+            </div>
+        </div>
+
+        <ul class="menu">
+            <li>▦ &nbsp; Dashboard</li>
+            <li>▤ &nbsp; Subjects</li>
+            <li>📢 &nbsp; Announcements</li>
+            <li class="active">▣ &nbsp; Events</li>
+            <li>▱ &nbsp; Resources</li>
+            <li>⚙ &nbsp; Settings</li>
+        </ul>
+
+        <div class="bottom-menu">
+            <div class="upload">⬆ &nbsp; Upload Material</div>
+            <p>❔ &nbsp; Help Center</p>
+            <p>⇥ &nbsp; Logout</p>
+        </div>
+
+    </aside>
+
+
+   
+    <main class="main">
+
+        <div class="header">
+
+            <div>
+                <h1>Campus Events</h1>
+                <p>Discover academic workshops, seminars, and student gatherings.</p>
+            </div>
+
+            <div class="filters">
+                <button class="blue">▣ Upcoming</button>
+                <button>♧ Registered</button>
+                <button>☰ Event Type</button>
+            </div>
+
+        </div>
+
+
+        <section class="events">
+
+            <div class="card featured">
+
+                <img src="https://images.unsplash.com/photo-1768448808550-3148cce53a19?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+
+                <div class="featured-content">
+
+                    <span class="tag">● Featured Seminar</span>
+
+                    <div class="department">
+                        COMPUTER SCIENCE DEPT
+                    </div>
+
+                    <p>◷ Today, 2:00 PM</p>
+
+                    <h2>
+                        The Future of Generative AI
+                        in Academic Research
+                    </h2>
+
+                    <p class="description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eveniet, nobis possimus consequatur accusamus assumenda officia pariatur repudiandae at? Consequuntur.
+                    </p>
+
+                    <div class="location">
+                        📍diploma seminar hall
+
+                        <button class="register">
+                            Register<br>Now
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="card recommend">
+
+                <span>✦ Recommended for You !</span>
+
+                <h2>
+                    Advanced Data
+                    Structures Study
+                    Group
+                </h2>
+
+                <p>
+                    Based on your current enrollment in CS-301,
+                    this student-led group focuses on preparing
+                    for the upcoming midterm exam.
+                </p>
+
+                <div class="details">
+                    <b>Date</b> &nbsp;&nbsp;&nbsp; Oct 24, 6:00 PM<br>
+                    <b> 📍Location</b> &nbsp; online library
+                </div>
+
+                <button class="view">
+                    View Details →
+                </button>
+
+            </div>
+
+
+            <div class="card small-card">
+
+                <span class="tag">Workshop</span>
+
+                <span class="tag">✓ Registered</span>
+
+                <h2>
+                    Thesis Writing Retreat:
+                    Structuring Your Argument
+                </h2>
+
+                <p>
+                    A focused 3-hour session providing quiet
+                    writing time interspersed with mi...
+                </p>
+
+                <div class="info">
+                    ▣ Tomorrow, 9:00 AM<br>
+                    📍 lab 4
+                </div>
+
+                <button class="view">
+                    Manage Booking
+                </button>
+
+            </div>
+
+
+            <div class="card small-card">
+
+                <span class="tag">Networking</span>
+
+                <h2>
+                    Alumni Mixer:
+                    Tech Industry Panel
+                </h2>
+
+                <p>
+                    Connect with recent graduates working at
+                    top technology firms. Bring your...
+                </p>
+
+                <div class="info">
+                    ▣ Friday, 5:30 PM<br>
+                    📍 Student Union room
+                </div>
+
+                <button class="view">
+                    View Details
+                </button>
+
+            </div>
+
+
+          
+            <div class="card small-card">
+
+                <span class="tag">Club Meeting</span>
+
+                <h2>
+                    Debate Society:
+                    Preliminary Rounds Prep
+                </h2>
+
+                <p>
+                    Strategy session and mock debates focusing
+                    on this semester's primary...
+                </p>
+
+                <div class="info">
+                    ▣ Next Mon, 7:00 PM<br>
+                    📍 Room 304, Humanities
+                </div>
+
+                <button class="view">
+                    View Details
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learnity - Announcements</title>
+
+ 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #202124;
+        }
+
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 275px;
+            height: 100vh;
+            background: #ffffff;
+            border-right: 2px solid #dce1e7;
+            padding: 28px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            padding-left: 14px;
+            margin-bottom: 38px;
+        }
+
+        .logo h2 {
+            color: #257e5f;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo p {
+            color: #555;
+            font-size: 14px;
+            margin-top: 3px;
+            letter-spacing: .3px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .menu-item {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            padding: 0 16px;
+            color: #555;
+            font-size: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .menu-item .icon {
+            width: 22px;
+            font-size: 21px;
+            text-align: center;
+        }
+
+        .menu-item.active {
+            color: #257e5f;
+            background: #e9f0ff;
+            border-left: 5px solid  #257e5f;
+            padding-left: 11px;
+            font-weight: 600;
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+
+        .upload-btn {
+            height: 40px;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            background: #257e5f;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 18px;
+        }
+
+        .bottom-item {
+            border-top: 2px solid #e1e4e8;
+            padding-top: 14px;
+            margin-top: 10px;
+        }
+
+
+        .main {
+            margin-left: 275px;
+            padding: 28px 34px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 34px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-top: 52px;
+        }
+
+        .search {
+            width: 280px;
+            height: 46px;
+            border: 1px solid #cfd5dc;
+            border-radius: 9px;
+            background: white;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 10px;
+        }
+
+        .search input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .select {
+            height: 46px;
+            min-width: 185px;
+            border: 1px solid #cfd5dc;
+            border-radius: 9px;
+            background: white;
+            padding: 0 15px;
+            font-size: 15px;
+            color: #444;
+        }
+
+        .filter-btn {
+            width: 47px;
+            height: 46px;
+            border: 1px solid #cfd5dc;
+            background: white;
+            border-radius: 9px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
+        .announcement-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid #d9dee5;
+            border-radius: 14px;
+            padding: 18px;
+            min-height: 275px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.04);
+        }
+
+        .featured {
+            grid-column: span 2;
+            min-height: 335px;
+            border: 2px solid #eadada;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            background: #e8ebee;
+        }
+
+        .tag.important {
+            background: #ffdada;
+            color: #a63838;
+        }
+
+        .tag.blue {
+            background: #dce8ff;
+            color: #257e5f;
+        }
+
+        .tag.yellow {
+            background: #fff0ca;
+            color: #9a7426;
+        }
+
+        .date {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .card h2 {
+            font-size: 24px;
+            line-height: 1.35;
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+
+        .read-btn {
+            margin-top: 24px;
+            height: 42px;
+            min-width: 195px;
+            border: 2px solid #cbd3dc;
+            background: white;
+            border-radius: 8px;
+            color: #257e5f;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 25px;
+            color: #257e5f;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .bottom-card {
+            min-height: 275px;
+        }
+
+        .ai-card {
+            background: #fffaf1;
+            border-color: #f0e4cd;
+        }
+
+        .ai-card .tag {
+            background: #fff0cc;
+            color: #9a7628;
+        }
+
+        .ai-symbol {
+            color: #c89d43;
+            font-size: 18px;
+        }
+
+    
+
+        .load-more {
+            display: block;
+            margin: 26px auto 0;
+            width: 300px;
+            height: 43px;
+            border: 1px solid #aeb5bd;
+            border-radius: 9px;
+            background: white;
+            font-size: 15px;
+            color: #555;
+            cursor: pointer;
+        }
+
+
+        @media (max-width: 1100px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+            }
+
+            .header {
+                flex-direction: column;
+            }
+
+            .filters {
+                margin-top: 20px;
+            }
+
+            .announcement-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .featured {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .sidebar-bottom {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .announcement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured {
+                grid-column: span 1;
+            }
+
+            .filters {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .search {
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>LEARNITY ACADEMIC</h2>
+            <p>Student Portal</p>
+        </div>
+
+        <nav class="menu">
+
+            <div class="menu-item">
+                <span class="icon">▦</span>
+                <span>DASHBOARD</span>
+            </div>
+
+            <div class="menu-item">
+                <span class="icon">▤</span>
+                <span>SUBJECT</span>
+            </div>
+
+            <div class="menu-item active">
+                <span class="icon">▪</span>
+                <span>ANNOUCEMENTS</span>
+            </div>
+
+            <div class="menu-item">
+                <span class="icon">▣</span>
+                <span>EVENTS</span>
+            </div>
+
+            <div class="menu-item">
+                <span class="icon">▱</span>
+                <span>RESOURCES</span>
+            </div>
+
+            <div class="menu-item">
+                <span class="icon">⚙</span>
+                <span>SETTINGS</span>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="upload-btn">
+                ⇧ &nbsp; UPLOAD STUDY MATERIAL
+            </button>
+
+            <div class="menu-item bottom-item">
+                <span class="icon">?</span>
+                <span>HELP CENTER</span>
+            </div>
+
+            <div class="menu-item">
+                <span class="icon">⇥</span>
+                <span>LOGOUT</span>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="header">
+
+            <div>
+                <h1>NOTIFICATION</h1>
+                <p>Stay updated with the latest university news and department notices.</p>
+            </div>
+
+            <div class="filters">
+
+                <div class="search">
+                    <span>⌕</span>
+                    <input
+                        type="text"
+                        placeholder="Search announcements..."
+                    >
+                </div>
+
+                <select class="select">
+                    <option>All Departments</option>
+                    <option>Computer Science</option>
+                    <option>University Administration</option>
+                    <option>Library Services</option>
+                    <option>BCA</option>
+                    <option>OTHER</option>
+                </select>
+
+                <select class="select">
+                    <option>All Priorities</option>
+                    <option>Important</option>
+                    <option>Normal</option>
+                </select>
+
+                <button class="filter-btn">☷</button>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="announcement-grid">
+
+
+            <article class="card featured">
+
+                <div class="card-top">
+                    <div>
+                        <span class="tag important">Important !</span>
+                        <span class="tag">University Administration</span>
+                    </div>
+
+                    <span class="date">SEP 24, 2026 • 09:00 AM</span>
+                </div>
+
+                <h2>
+                    Campus Closure Due to Extreme Weather Conditions
+                </h2>
+
+                <p class="card-text">
+                    Due to the impending severe storm forecasted by the
+                    National Weather Service, all in-person classes and
+                    non-essential campus operations will be suspended starting
+                    tomorrow, SEPTEMBER...
+                </p>
+
+                <button class="read-btn">
+                    Read Full<br>
+                    Details &nbsp; → 
+                </button>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-top">
+                    <span class="tag blue">B.TECH/B.PHARM</span>
+                </div>
+
+                <h3>
+                    Spring 2026 Course Registration Opens Next Week
+                </h3>
+
+                <p class="date">SEP 23, 2026</p>
+
+                <p class="card-text" style="margin-top:16px;">
+                    Advising holds will be lifted by Friday. Ensure you have
+                    met with your academic advisor before...
+                </p>
+
+                <span class="read-more">
+                    Read More &nbsp; ›
+                </span>
+
+            </article>
+
+
+        
+
+            <article class="card bottom-card">
+
+                <div class="card-top">
+                    <span class="tag">LIBRARY SERVICES !</span>
+                </div>
+
+                <h3>
+                    Extended Hours for Midterms
+                </h3>
+
+                <p class="date">Oct 26, 2026</p>
+
+                <p class="card-text" style="margin-top:16px;">
+                    The main campus library will remain open 9AM-5PM starting
+                    this weekend through the end of the...
+                </p>
+
+                <span class="read-more">
+                     &nbsp; READ MORE ›
+                </span>
+
+            </article>
+
+
+
+            <article class="card bottom-card ai-card">
+
+                <div class="card-top">
+                    <span class="tag yellow">
+                        ✿ &nbsp; AI Digest Summary
+                    </span>
+
+                    <span class="ai-symbol">✦</span>
+                </div>
+
+                <h3>
+                    Weekly Departmental Seminar Digest
+                </h3>
+
+                <p class="date">Oct 25, 2026</p>
+
+                <p class="card-text" style="margin-top:16px;">
+                    Three seminars this week align with your registered
+                    coursework in WEB DEVOLOPMENT. Notable speak...
+                </p>
+
+                <span class="read-more">
+                    View Details &nbsp; ›
+                </span>
+
+            </article>
+
+
+            <article class="card bottom-card">
+
+                <div class="card-top">
+                    <span class="tag">STUDENT COUNCIL</span>
+                </div>
+
+                <h3>
+                    Career Fair Vendor List Updated
+                </h3>
+
+                <p class="date">Oct 20, 2026</p>
+
+                <p class="card-text" style="margin-top:16px;">
+                    Over 50 new tech companies have been added to the roster
+                    for the upcoming Fall Career Fair. Review...
+                </p>
+
+                <span class="read-more">
+                    Read More &nbsp; ›
+                </span>
+
+            </article>
+
+        </section>
+
+
+        <button class="load-more">
+            Load More<br>
+            Announcements !!
+        </button>
+
+    </main>
+
+</body>
+</html>
