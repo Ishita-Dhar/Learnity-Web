@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learnity - Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:
+        radial-gradient(circle at 18% 88%, rgba(180, 255, 220, 0.28), transparent 28%),
+        radial-gradient(circle at 82% 25%, rgba(210, 225, 255, 0.25), transparent 32%),
+        #f8fafc;
+      color: #222;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .hed {
+      margin-bottom: 38px;
+    }
+
+    .hed h1 {
+      color: #0753a8;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .hed p {
+      color: #555555;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    .login-page {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid #e1e5ea;
+      border-radius: 13px;
+      padding: 28px 42px 25px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 27px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #202020;
+    }
+
+    .input-box {
+      position: relative;
+    }
+
+    .input-box input {
+      width: 100%;
+      height: 48px;
+      border: 1px solid #858585;
+      background: transparent;
+      border-radius: 0;
+      padding: 0 40px;
+      font-size: 16px;
+      color: #0f0e0e;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .input-box input:focus {
+      border-color: #0753a8;
+      box-shadow: 0 0 0 2px rgba(7, 83, 168, 0.08);
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca1a8;
+      font-size: 18px;
+    }
+
+    .eye {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca1a7;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: -2px;
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #555;
+    }
+
+    .remember input {
+      width: 16px;
+      height: 16px;
+      /* appearance: none; */
+      border: 1px solid #c5c9ce;
+      border-radius: 5px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .remember input:checked {
+      background: #eef2f7;
+      border-color: #0753a8;
+    }
+
+    .forgot {
+      color: #064d91;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .forgot:hover {
+      text-decoration: underline;
+    }
+
+    .signin-btn {
+      width: 100%;
+      height: 50px;
+      border: none;
+      border-radius: 8px;
+      background: #0753bd;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .signin-btn:hover {
+      background: #06469e;
+    }
+
+    .signin-btn:active {
+      transform: scale(0.90);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 34px 0 28px;
+      color: #555;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      background: #dedede;
+      flex: 1;
+    }
+
+    .alternative {
+      display: flex;
+      gap: 13px;
+    }
+
+    .alt-btn {
+        flex: 1;
+      height: 48px;
+      background: #fff;
+      border: 1px solid #dedede;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      color: #252525;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .alt-btn:hover {
+      background: #f8f9fb;
+      border-color: #c9cdd2;
+    }
+
+    .alt-icon {
+      font-size: 18px;
+    }
+
+    .footer {
+      margin-top: 55px;
+      text-align: center;
+      color: #777;
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: #0753a8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- header part -->
+    <header class="hed">
+      <h1>Learnity</h1>
+      <p>Academic Gateway</p>
+    </header>
+      
+    <section class="login-page">
+
+      <!-- Email clg -->
+      <div class="form-group">
+        <label for="email">Email / College ID</label>
+
+        <div class="input-box">
+          <span class="input-icon">✉️</span>
+          <input type="text"id="email"value="sandip@gmail.com"placeholder="Email / College ID">
+        </div>
+      </div>
+
+      <!-- Password --> 
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <div class="input-box">
+          <span class="input-icon">🔑</span>
+          <input type="password"id="password"value="password@123"placeholder="Password">
+          <span class="eye" onclick="togglePassword()">👁️</span>
+        </div>
+      </div>
+
+      <!-- Options -->
+      <div class="options">
+
+        <label class="remember">
+          <input type="checkbox" name="" id="remember"value="yes">
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot">Forgot password?</a>
+      </div>
+
+      <!-- Sign-->
+      <button class="signin-btn" onclick="signIn()">Sign In</button>
+
+      <div class="divider">
+        <span>Or continue with</span>
+      </div>
+
+      <div class="alternative">
+
+        <button class="alt-btn" onclick="institutionLogin()">
+          <span class="alt-icon">🎓</span>
+          Institution
+        </button>
+
+        <button class="alt-btn" onclick="scanQR()">
+          <span class="alt-icon">▦</span>
+          Scan QR
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+      Need help? <a href="#">Contact Support</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
