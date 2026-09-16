@@ -15,10 +15,40 @@ import {
   MdArrowForward,
   MdCheckCircle,
 } from "react-icons/md";
+import Beta from "../Components/Beta";
 
 const FacultyDashboard = () => {
+  const overviewCards = [
+    {
+      icon: <MdMenuBook size={23} />,
+      title: "My Subjects",
+      value: "4 Classes",
+      status: "Active",
+      bg:"bg-green-100",
+      color:"text-green-800"
+    },
+    {
+      icon: <MdFolder size={23} />,
+      title: "Recent Materials",
+      value: "12 Uploads",
+      subtitle: "+3 this week",
+      bg:"bg-red-100",
+      color:"text-red-800"
+
+    },
+    {
+      icon: <MdCampaign size={23} />,
+      title: "Recent Announcements",
+      value: "5 Drafts",
+      status: "notification",
+      action: "Review drafts",
+      bg:"bg-red-100",
+      color:"text-red-900"
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-6 text-gray-800 sm:px-6 lg:px-8">
+    <div className=" bg-gray-50 px-4 py-6 text-gray-800 sm:px-6 lg:px-8">
 
       {/* Header */}
       <header className="mb-8 flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
@@ -35,8 +65,8 @@ const FacultyDashboard = () => {
         <div className="flex items-center gap-3 text-sm text-gray-500">
           <span>All Semester 2026</span>
 
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-700">
-            <MdCircle size={20} />
+          <div className="flex p-1 items-center justify-center rounded-full bg-green-100 ">
+            <img className="h-10 w-10 rounded-full object-cover border border-green-700 " src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
           </div>
         </div>
       </header>
@@ -44,71 +74,54 @@ const FacultyDashboard = () => {
       {/* Overview Cards */}
       <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
 
-        {/* Subjects */}
-        <div className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-50 text-gray-600">
-              <MdMenuBook size={23} />
+        {overviewCards.map((card, index) => (
+          <div
+            key={index}
+            className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl"
+          >
+            {/* Top */}
+            <div className="flex items-center justify-between">
+
+              <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${card.bg} ${card.color}`}>
+                {card.icon}
+              </div>
+
+              {card.status === "Active" && (
+                <span className="rounded-full bg-green-50 px-3 py-1.5 text-xs font-semibold text-green-700">
+                  Active
+                </span>
+              )}
+
+              {card.status === "notification" && (
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+              )}
+
             </div>
 
-            <span className="rounded-full bg-green-50 px-3 py-1.5 text-xs font-semibold text-green-700">
-              Active
-            </span>
+            {/* Content */}
+            <p className="mt-8 text-sm font-medium text-gray-500">
+              {card.title}
+            </p>
+
+            <h2 className="mt-2 text-2xl font-semibold text-gray-800">
+              {card.value}
+            </h2>
+
+            {card.subtitle && (
+              <small className="mt-2 block text-sm text-gray-400">
+                {card.subtitle}
+              </small>
+            )}
+
+            {card.action && (
+              <button className="mt-2 flex items-center gap-1 text-sm font-medium text-green-700 transition hover:text-green-800">
+                {card.action}
+                <MdArrowForward size={17} />
+              </button>
+            )}
           </div>
+        ))}
 
-          <p className="mt-8 text-sm font-medium text-gray-500">
-            My Subjects
-          </p>
-
-          <h2 className="mt-2 text-2xl font-semibold text-gray-800">
-            4 Classes
-          </h2>
-        </div>
-
-        {/* Materials */}
-        <div className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-50 text-gray-600">
-              <MdFolder size={23} />
-            </div>
-          </div>
-
-          <p className="mt-8 text-sm font-medium text-gray-500">
-            Recent Materials
-          </p>
-
-          <h2 className="mt-2 text-2xl font-semibold text-gray-800">
-            12 Uploads
-          </h2>
-
-          <small className="mt-2 block text-sm text-gray-400">
-            +3 this week
-          </small>
-        </div>
-
-        {/* Announcements */}
-        <div className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl md:col-span-2 xl:col-span-1">
-          <div className="flex items-center justify-between">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-50 text-gray-600">
-              <MdCampaign size={23} />
-            </div>
-
-            <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-          </div>
-
-          <p className="mt-8 text-sm font-medium text-gray-500">
-            Recent Announcements
-          </p>
-
-          <h2 className="mt-2 text-2xl font-semibold text-gray-800">
-            5 Drafts
-          </h2>
-
-          <button className="mt-2 flex items-center gap-1 text-sm font-medium text-green-700 transition hover:text-green-800">
-            Review drafts
-            <MdArrowForward size={17} />
-          </button>
-        </div>
       </section>
 
       {/* Quick Actions */}
@@ -292,7 +305,8 @@ const FacultyDashboard = () => {
           </div>
 
           {/* Insights */}
-          <div className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl sm:p-6">
+          <div className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl sm:p-6 relative"> 
+          <Beta/>
             <h3 className="flex items-center gap-2 text-base font-semibold text-gray-700">
               <MdLightbulb className="text-yellow-600" size={20} />
               Insights

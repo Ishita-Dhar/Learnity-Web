@@ -181,7 +181,7 @@ const Events = () => {
                         </p>
                     </div>
 
-                    <button className="mt-6 flex w-full items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-medium text-gray-600 transition hover:bg-gray-50">
+                    <button className="mt-6 flex w-full items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-medium text-gray-600 transition hover:bg-gray-100">
                         View Details
                         <MdArrowForward />
                     </button>

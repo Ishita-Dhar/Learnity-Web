@@ -1,6 +1,7 @@
 import React from 'react'
 import StudentDashboard from './Student/StudentDashboard'
-import FacultyDashboard from './Faculty/FacultyPortal'
+import FacultyDashboard from './Faculty/FacultyDashboard'
+import Login from './Public/Login'
 
 
 function App() {
@@ -8,8 +9,9 @@ function App() {
 
   return (
     <div>
-      <StudentDashboard/>
-      {/* <FacultyDashboard/> */}
+      {/* <Login/> */}
+      {/* <StudentDashboard/> */}
+      <FacultyDashboard/>
     </div>
   )
 }

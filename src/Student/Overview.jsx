@@ -13,6 +13,7 @@ import Beta from '../Components/Beta';
 import { LuSparkles } from "react-icons/lu";
 import { IoFilterSharp } from "react-icons/io5";
 import { MdPictureAsPdf } from "react-icons/md";
+import Now  from "../Student/now";
 
 const Overview = () => {
 
@@ -78,21 +79,22 @@ const Overview = () => {
 
     const Schedule = [
         {
-            time: <span>9:00 AM</span>,
+            time: <div className='text-center'> <span className='font-bold '>09:00</span><br />AM</div>,
             title: "Data Structures ",
             location: "Room 310",
             StaffAllotment: " Dr. Smith",
 
         },
         {
-            time: "11:00 AM",
+            time: <div className='text-center'> <span className='font-semibold text-lg'>11:00</span><br />AM</div>,
             title: "Operating Systems",
             location: "Lab 3",
             StaffAllotment: " Dr. Trumph",
+            beta: <Now/>,
 
         },
         {
-            time: "2:00 PM",
+            time: <div className='text-center'> <span className='font-semibold text-lg'>2:00</span><br />PM</div>,
             title: "Database Systems",
             location: "Room 211",
             StaffAllotment: " Dr. Johnson",
@@ -276,7 +278,7 @@ const Overview = () => {
 
                     {/*  AI STUDY ASSISTANT  */}
 
-                    <div className="group relative flex flex-col gap-4 rounded-2xl border border-gray-300 bg-white p-4 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl sm:flex-row sm:items-center sm:p-5">
+                    <div className="group relative flex flex-col gap-4 rounded-2xl border border-gray-300 bg-red-100/20 p-4 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl sm:flex-row sm:items-center sm:p-5">
 
                         <Beta />
 
@@ -310,7 +312,7 @@ const Overview = () => {
 
             {/*  BOTTOM SECTION  */}
 
-            <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 xl:grid-cols-3">
 
                 {/*  RECENT ACTIVITY  */}
 
@@ -453,7 +455,7 @@ const Overview = () => {
 
                 {/*  SCHEDULE  */}
 
-                <div className="group hidden rounded-2xl border border-gray-300 bg-white shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl xl:flex xl:flex-col">
+                <div className="group rounded-2xl border border-gray-300 bg-white shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl xl:flex xl:flex-col">
 
                     <div className="border-b border-gray-200 px-5 py-3 flex items-center justify-between">
 
@@ -466,19 +468,21 @@ const Overview = () => {
 
                     </div>
 
-                    <div className=''>
+                    <div className='py-2 px-4 flex flex-col'>
                         {
                         Schedule.map((item, idx) => (
-                            <div className="flex border px-2 py-1  gap-2 ">
-                                <div>
+                            <div className="flex  px-2 py-1  gap-1 " key={idx}>
+                                <div className='px-1 py-2 flex gap-5  relative'>
                                     {item.time}
+                                    {/* <div className='p-1 bg-green-800 rounded-full absolute z-1 top-5 right-0'></div> */}
+                                    
                                 </div>
                                 <div className='p-1'>
-
                                 </div>
-                                <div>
+                                <div className='px-4 py-2 rounded-lg border border-gray-300  w-full active:border-l-4 active:border-green-800 hover:border-l-4 hover:border-green-800 active:bg-green-400/10 transition-all duration-200 flex flex-col gap-1 relative'>
+                                    {item.beta}
                                     <h1 className='font-semibold'>{item.title}</h1>
-                                    <h3 className='flex items-center text-sm text-gray-400'>{item.location}<GoDotFill />{item.StaffAllotment}</h3>
+                                    <h3 className='flex items-center gap-1 text-sm text-gray-500'>{item.location}<GoDotFill size={10} />{item.StaffAllotment}</h3>
                                 </div>
                             </div>
                         ))

@@ -51,7 +51,7 @@ const Sidebar = () => {
                 <div className="flex items-center gap-4 mb-10">
 
                     <img
-                        src=""
+                        src="#"
                         alt="Learnity"
                         className="h-15 w-15 bg-green-300 rounded-full object-cover"
                     />
