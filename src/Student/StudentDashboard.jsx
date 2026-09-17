@@ -11,9 +11,9 @@ const StudentDashboard = () => {
           <Sidebar/>
         </aside>
         <main className='w-4/5 overflow-y-scroll py-10 px-6'>
-          <Overview/>
+          {/* <Overview/> */}
           {/* <Announcements/> */}
-          {/* <Events/> */}
+          <Events/>
         </main>
     </div>
   )

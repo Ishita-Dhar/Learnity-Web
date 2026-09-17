@@ -10,7 +10,7 @@ const FacultyDashboard = () => {
         <aside className='w-1/5 shrink-0'>
           <Sidebar/>
         </aside>
-        <main className='min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8'>
+        <main className='min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8 overflow-y-auto'>
           <FacultyPortal/>
           {/* <Announcements/> */}
           {/* <Events/> */}
