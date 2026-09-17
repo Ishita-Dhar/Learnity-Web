@@ -298,14 +298,14 @@ const FacultyDashboard = () => {
               </div>
             </div>
 
-            <button className="mt-5 flex w-full items-center justify-center gap-1 text-sm font-medium text-green-700 transition hover:text-green-800">
+            <button className="mt-5 flex w-full items-center justify-center gap-1 text-sm font-medium text-green-700 transition hover:text-green-800 hover:underline">
               View Schedule
               <MdArrowForward size={17} />
             </button>
           </div>
 
           {/* Insights */}
-          <div className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl sm:p-6 relative"> 
+          <div className="group rounded-2xl border border-gray-300 bg-amber-100/50 p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl sm:p-6 relative"> 
           <Beta/>
             <h3 className="flex items-center gap-2 text-base font-semibold text-gray-700">
               <MdLightbulb className="text-yellow-600" size={20} />
