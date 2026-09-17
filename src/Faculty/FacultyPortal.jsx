@@ -77,7 +77,7 @@ const FacultyDashboard = () => {
         {overviewCards.map((card, index) => (
           <div
             key={index}
-            className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl"
+            className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl cursor-pointer"
           >
             {/* Top */}
             <div className="flex items-center justify-between">
@@ -126,17 +126,17 @@ const FacultyDashboard = () => {
 
       {/* Quick Actions */}
       <section className="my-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <button className="flex items-center justify-center gap-2 rounded-xl bg-green-700 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-800">
+        <button className="flex items-center justify-center gap-2 rounded-xl bg-green-700 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-800 cursor-pointer">
           <MdUploadFile size={20} />
           Upload Material
         </button>
 
-        <button className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-200">
+        <button className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-200 cursor-pointer">
           <MdNotifications size={20} />
           Create Announcement
         </button>
 
-        <button className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-200">
+        <button className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-200 cursor-pointer">
           <MdEvent size={20} />
           Create Event
         </button>
@@ -148,7 +148,7 @@ const FacultyDashboard = () => {
         {/* Recent Activity */}
         <div className="group rounded-2xl border border-gray-300 bg-white p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl sm:p-6">
 
-          <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+          <div className="flex items-center justify-between border-b border-gray-300 pb-4">
             <h3 className="flex items-center gap-2 text-base font-semibold text-gray-700">
               <MdCircle className="text-green-700" size={13} />
               Recent Activity
@@ -165,7 +165,7 @@ const FacultyDashboard = () => {
               <MdDescription size={18} />
             </div>
 
-            <div className="w-full rounded-xl border border-gray-100 bg-gray-50/50 p-4 hover:bg-green-100/50 transition-all">
+            <div className="w-full rounded-xl border border-gray-300 bg-gray-50/50 p-4 hover:bg-green-100/50 transition-all">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                 <b className="text-sm font-semibold text-gray-700">
                   Uploaded Syllabus - OEC-CS 701B
@@ -192,7 +192,7 @@ const FacultyDashboard = () => {
               <MdCampaign size={18} />
             </div>
 
-            <div className="w-full rounded-xl border border-gray-100 bg-gray-50/50 p-4 hover:bg-yellow-100/50 transition-all">
+            <div className="w-full rounded-xl border border-gray-300 bg-gray-50/50 p-4 hover:bg-yellow-100/50 transition-all">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                 <b className="text-sm font-semibold text-gray-700">
                   Published Announcement
@@ -216,7 +216,7 @@ const FacultyDashboard = () => {
               <MdCheckCircle size={18} />
             </div>
 
-            <div className="w-full rounded-xl border border-gray-100 bg-gray-50/50 p-4 hover:bg-green-100/50 transition-all">
+            <div className="w-full rounded-xl border border-gray-300 bg-gray-50/50 p-4 hover:bg-green-100/50 transition-all">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                 <b className="text-sm font-semibold text-gray-700">
                   AI Quiz Generation Completed
@@ -251,7 +251,7 @@ const FacultyDashboard = () => {
             </h3>
 
             {/* Meeting 1 */}
-            <div className="mt-5 flex gap-4 border-t border-gray-100 pt-4">
+            <div className="mt-5 flex gap-4 border-t border-gray-300 pt-4">
               <div className="min-w-14">
                 <small className="block text-xs font-medium text-gray-400">
                   TODAY
@@ -275,7 +275,7 @@ const FacultyDashboard = () => {
             </div>
 
             {/* Meeting 2 */}
-            <div className="mt-4 flex gap-4 border-t border-gray-100 pt-4">
+            <div className="mt-4 flex gap-4 border-t border-gray-300 pt-4">
               <div className="min-w-14">
                 <small className="block text-xs font-medium text-gray-400">
                   TODAY
@@ -298,14 +298,14 @@ const FacultyDashboard = () => {
               </div>
             </div>
 
-            <button className="mt-5 flex w-full items-center justify-center gap-1 text-sm font-medium text-green-700 transition hover:text-green-800 hover:underline">
+            <button className="mt-5 flex w-full items-center justify-center gap-1 text-sm font-medium text-green-700 transition hover:text-green-800 hover:underline cursor-pointer">
               View Schedule
               <MdArrowForward size={17} />
             </button>
           </div>
 
           {/* Insights */}
-          <div className="group rounded-2xl border border-gray-300 bg-amber-100/50 p-5 shadow-green-800/10 transition-all duration-200 hover:border-gray-400 hover:shadow-xl sm:p-6 relative"> 
+          <div className="group rounded-2xl border border-red-300 bg-amber-100/50 p-5 shadow-green-800/10 transition-all duration-200   sm:p-6 relative"> 
           <Beta/>
             <h3 className="flex items-center gap-2 text-base font-semibold text-gray-700">
               <MdLightbulb className="text-yellow-600" size={20} />
