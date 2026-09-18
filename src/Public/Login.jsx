@@ -29,7 +29,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 py-8 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 px-4 py-8 sm:px-6 lg:px-8">
       <div className="w-full max-w-xl text-center">
         
         {/* Header */}
@@ -64,7 +64,7 @@ const Login = () => {
                 defaultValue=""
                 placeholder="Email / College ID"
                 className="h-12 w-full rounded-xl border border-gray-400
-                hover:shadow-md bg-transparent pl-10 pr-4 text-sm sm:text-base text-gray-900 outline-none transition-all duration-200 focus:border-green-700 focus:ring-2 focus:ring-blue-700/10"
+                hover:shadow-md bg-transparent pl-10 pr-4 text-sm sm:text-base text-gray-900 outline-none transition-all duration-200 focus:border-green-700 focus:ring-2 focus:ring-blue-700/10 hover:bg-green-100/30"
               />
             </div>
           </div>
@@ -86,7 +86,7 @@ const Login = () => {
                 id="password"
                 defaultValue=""
                 placeholder="Password"
-                className="h-12 w-full rounded-xl border border-gray-400 bg-transparent pl-10 pr-11 text-sm sm:text-base text-gray-900 outline-none transition-all duration-200 focus:border-green-700 focus:ring-2 focus:ring-blue-700/10"
+                className="h-12 w-full rounded-xl border border-gray-400 bg-transparent pl-10 pr-11 text-sm sm:text-base text-gray-900 outline-none transition-all duration-200 focus:border-green-700 focus:ring-2 focus:ring-blue-700/10 hover:bg-green-100/30"
               />
 
               <button
@@ -124,7 +124,7 @@ const Login = () => {
           <button
             type="button"
             onClick={signIn}
-            className="w-full rounded-lg bg-green-700 px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-green-800 active:scale-[0.98]"
+            className="w-full rounded-lg bg-green-700 px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-green-800 active:scale-[0.98] cursor-pointer"
           >
             Sign In
           </button>
@@ -146,7 +146,7 @@ const Login = () => {
             <button
               type="button"
               onClick={institutionLogin}
-              className="flex min-h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 transition-all duration-200 hover:border-gray-400 hover:bg-gray-50 hover:shadow-sm"
+              className="flex min-h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 transition-all duration-200 hover:border-gray-400 hover:bg-gray-200 hover:shadow-sm cursor-pointer "
             >
               <MdSchool className="text-lg text-gray-600" />
               <span>Institution</span>

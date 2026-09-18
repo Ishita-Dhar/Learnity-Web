@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
       {/* <Login/> */}
-      {/* <StudentDashboard/> */}
-      <FacultyDashboard/>
+      <StudentDashboard/>
+      {/* <FacultyDashboard/> */}
     </div>
   )
 }
